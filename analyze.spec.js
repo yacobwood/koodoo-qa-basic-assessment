@@ -76,10 +76,10 @@ test('Payments with a lower case a for Amounts are successfully processed', t =>
     },
   ]), {
     max: 28,
-    mean: 14.5,
-    median: 14.5,
+    mean: 12.33,
+    median: 8,
     min: 1,
-    standardDeviation: 13.5,
+    standardDeviation: 11.44,
   })
 })
 
@@ -98,10 +98,10 @@ test('Payments with large amounts are successfully processed', t => {
     },
   ]), {
     max: 1321546167,
-    mean: 679048668,
-    median: 679048668,
+    mean: 529917961,
+    median: 231656548,
     min: 36551169,
-    standardDeviation: 642497499,
+    standardDeviation: 565404244,
   })
 })
 
@@ -120,10 +120,10 @@ test('Payments with negative amounts are successfully processed', t => {
     },
   ]), {
     max: -36551169,
-    mean: -679048668,
-    median: -679048668,
+    mean: -529917961,
+    median: -231656548,
     min: -1321546167,
-    standardDeviation: 642497499,
+    standardDeviation: 565404244,
   })
 })
 
