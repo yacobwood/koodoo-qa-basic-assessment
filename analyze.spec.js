@@ -197,14 +197,14 @@ test('Payments with missing Transaction Information are not processed', t => {
   })
 })
 
-test('Payments with a lower case t for Transaction Information are successfully processed', t => {
+test('Payments with a lower case t & i for Transaction Information are successfully processed', t => {
   t.deepEqual(analysePayments([{
     "Amount": 1,
     "TransactionInformation": "Payment One"
   },
     {
       "Amount": 8,
-      "TransactionInformation": "Payment Two"
+      "transactioninformation": "Payment Two"
     },
     {
       "Amount": 28,
