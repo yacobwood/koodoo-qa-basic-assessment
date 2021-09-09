@@ -197,6 +197,28 @@ test('Payments with missing Transaction Information are not processed', t => {
   })
 })
 
+test('Payments with a lower case t for Transaction Information are successfully processed', t => {
+  t.deepEqual(analysePayments([{
+    "Amount": 1,
+    "TransactionInformation": "Payment One"
+  },
+    {
+      "Amount": 8,
+      "TransactionInformation": "Payment Two"
+    },
+    {
+      "Amount": 28,
+      "TransactionInformation": "Payment Three"
+    },
+  ]), {
+    max: 28,
+    mean: 12.33,
+    median: 8,
+    min: 1,
+    standardDeviation: 11.44,
+  })
+})
+
 test('Blank arrays are successfully processed', t => {
   t.deepEqual(analysePayments([]), {
     max: 0,
