@@ -89,7 +89,7 @@ test('Payments with large amounts are successfully processed', t => {
     "TransactionInformation": "Payment One"
   },
     {
-      "amount": 231656548,
+      "Amount": 231656548,
       "TransactionInformation": "Payment Two"
     },
     {
@@ -111,7 +111,7 @@ test('Payments with negative amounts are successfully processed', t => {
     "TransactionInformation": "Payment One"
   },
     {
-      "amount": -231656548,
+      "Amount": -231656548,
       "TransactionInformation": "Payment Two"
     },
     {
