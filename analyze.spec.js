@@ -170,7 +170,7 @@ test('Payments with non numeric amounts are sanitized', t => {
 })
 
 test('Payments with a comma in the amount are sanitized', t => {
-  t.deepEqual(sanitizeAmounts([{"Amount": "1,234"}]), [1234])
+  t.deepEqual(sanitizeAmounts([{"Amount": "1,234"}]), [NaN])
 })
 
 test('Payments with missing Transaction Information are not processed', t => {
@@ -187,14 +187,13 @@ test('Payments with missing Transaction Information are not processed', t => {
     },
     {
       "Amount": 4,
-      "TransactionInformation": "Payment Four"
     }
   ]), {
-    max: 4,
-    mean: 2.5,
-    median: 2.5,
+    max: 2,
+    mean: 1.5,
+    median: 1.5,
     min: 1,
-    standardDeviation: 1.12,
+    standardDeviation: 0.5,
   })
 })
 
@@ -205,5 +204,29 @@ test('Blank arrays are successfully processed', t => {
     median: 0,
     min: 0,
     standardDeviation: 0,
+  })
+})
+
+test('Partial blank arrays are sanitized correctly', t => {
+  t.deepEqual(analysePayments([{
+    "Amount": 1,
+    "TransactionInformation": "Payment One"
+  },
+    {
+      "Amount": 2,
+      "TransactionInformation": "Payment Two"
+    },
+    {
+      "Amount": 3,
+      "TransactionInformation": "Payment Three"
+    },
+    {
+    }
+  ]), {
+    max: 3,
+    mean: 2,
+    median: 2,
+    min: 1,
+    standardDeviation: 0.82,
   })
 })
